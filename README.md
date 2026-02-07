@@ -1,12 +1,13 @@
 <p align="center">
   <img src="https://github.com/Chill-Astro/MsixCertImportTool/blob/main/MsixCertImportTool.ico" width="128px" height="128px" alt="MsixCertImportTool Logo">
 </p>
-<h1 align="center">MsixCertImportTool v1.1</h1>
+<h1 align="center">Trust My Msix! v1.2</h1>
+
 MsixCertImportTool is a Simple Command-Line App designed to import .cer files to the Trusted Root Certification Authourities Store in Windows in a few keystrokes! This speeds up the process of certificate importing for Self-Signed Msix Packages on Windows and it is very helpful to non tech-savvy users. 
 
 ### WARNING! ⚠️ :
 
-This is the original version of MsixCertImportTool! Don't trust Counterfeit Versions! Importing random certificates is dangerous! Please proceed with care! Also I am no contributor! 
+This is the original version of Trust My Msix! Don't trust Counterfeit Versions. Importing random certificates is dangerous. Please proceed with care....
 
 ## Key Features :
 
@@ -17,7 +18,7 @@ This is the original version of MsixCertImportTool! Don't trust Counterfeit Vers
 
 ---
 
-## Installing MsixCertTool from Winget :
+## Installing Trust My Msix from Winget :
 
     winget install MsixCertImportTool
 
@@ -28,7 +29,7 @@ This is the original version of MsixCertImportTool! Don't trust Counterfeit Vers
 
 - Any system with Python installed.
 - Requires Requests package to be installed via pip.
-- No Python installation needed if using Installer or `MsixCertImportTool.exe` on Windows Systems!
+- No Python installation needed if using Installer or `tmm.exe` on Windows Systems!
 
 ---
 
