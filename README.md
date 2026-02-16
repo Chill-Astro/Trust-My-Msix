@@ -1,11 +1,13 @@
 <p align="center">
   <img src="https://github.com/Chill-Astro/MsixCertImportTool/blob/main/MsixCertImportTool.ico" width="128px" height="128px" alt="MsixCertImportTool Logo">
 </p>
-<h1 align="center">Trust My Msix! v1.2</h1>
+<h1 align="center">Trust My Msix!</h1>
 
-MsixCertImportTool is a Simple Command-Line App designed to import .cer files to the Trusted Root Certification Authourities Store in Windows in a few keystrokes! This speeds up the process of certificate importing for Self-Signed Msix Packages on Windows and it is very helpful to non tech-savvy users. 
+<div align="center">Version : `3.14.1.2`
 
-### WARNING! ⚠️ :
+Trust My Msix! is a Simple Command-Line App designed to import .cer files to the Trusted Root Certification Authourities Store in Windows in a few keystrokes! This speeds up the process of certificate importing for Self-Signed Msix Packages on Windows and it is very helpful to non tech-savvy users. 
+
+### ⚠️ WARNING! :
 
 This is the original version of Trust My Msix! Don't trust Counterfeit Versions. Importing random certificates is dangerous. Please proceed with care....
 
@@ -15,12 +17,13 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 - Update Checking Support. ✅
 - Extremely Quick and Reliable. ✅
 - Zero Instructions Needed for Novice Users. ✅
+- Supports Arguments for Easy Importing. ✅
 
 ---
 
-## Installing Trust My Msix from Winget :
+## Installing Trust My Msix! from Winget :
 
-    winget install MsixCertImportTool
+    winget install Chill-Astro.TMM
 
 ---
     
@@ -29,7 +32,17 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 
 - Any system with Python installed.
 - Requires Requests package to be installed via pip.
-- No Python installation needed if using Installer or `tmm.exe` on Windows Systems!
+- No Python installation needed if using Installer or `TMM.exe` on Windows Systems!
+
+---
+
+## Usage :
+
+- Trust My Msix! can be easily used by just running the lose `.exe`
+- Trust My Msix!'s entire CLI can be bypassed by using the argument '--path' :
+      
+      tmm --path <path>
+      # python tmm.py --path <path> if using Python File.
 
 ---
 

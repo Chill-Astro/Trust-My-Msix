@@ -1,10 +1,10 @@
 To export using Pyinstaller
 
-pyinstaller -F -i MsixCertImportTool.ico MsixCertImportTool.py
+pyinstaller -F -i TMM.ico TMM.py
 
 [ If without icon ]
 
-pyinstaller -F MsixCertImportTool.py
+pyinstaller -F TMM.py
 
 If Pyinstaller not available,
 
