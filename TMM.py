@@ -81,8 +81,7 @@ class CustomParser(argparse.ArgumentParser):
         sys.exit(2)
 
 if __name__ == "__main__":
-    parser = CustomParser(
-        description="TMM Certificate Importer",
+    parser = CustomParser(        
         usage="%(prog)s --path <path_to_cert>",
         add_help=False
     )
