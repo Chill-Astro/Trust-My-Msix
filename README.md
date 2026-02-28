@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/Chill-Astro/MsixCertImportTool/blob/main/TMM.ico" width="128px" height="128px" alt="MsixCertImportTool Logo">
+  <img src="https://github.com/Chill-Astro/MsixCertImportTool/blob/main/TMM.ico" width="128px" height="128px" alt="TMM Logo">
 </p>
 <h1 align="center">Trust My Msix!</h1>
 
