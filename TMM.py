@@ -5,15 +5,15 @@ import sys
 import ctypes
 import argparse
 
-UPDATE_VERSION_URL = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/MCIT_V.txt"
+UPDATE_VERSION_URL = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/8b0c95d2e0b718914cd3588a0b142f971da0b941/TMM_V.txt"
 CURRENT_VERSION = "3.14.1.2"
 
 def logo():
     print(r"""
- _____ ___  _   _ ___ _____   __  __  __    __ __  __  ___  ___ __  __  _ 
-|_   _| _ \| | | / __|_   _| |  \/  | \ \ / / |  \/  |/ __||_ _|\ \/ / | |
-  | | |   /| |_| \__ \ | |   | |\/| |  \ V /  | |\/| |\__ \ | |  >  <  |_|
-  |_| |_|_\ \___/|___/ |_|   |_|  |_|   |_|   |_|  |_||___/|___//_/\_\ (_)
+ _____ ___  _   _  ___ _____   __  __  __    __ __  __  ___  ___ __  __  _ 
+|_   _| _ \| | | |/ __|_   _| |  \/  | \ \ / / |  \/  |/ __||_ _|\ \/ / | |
+  | | |   /| |_| |\__ \ | |   | |\/| |  \ V /  | |\/| |\__ \ | |  >  <  |_|
+  |_| |_|_\ \___/ |___/ |_|   |_|  |_|   |_|   |_|  |_||___/|___|/_/\_\ (_)
 
 (C) Chill-Astro | 2026
           """)
@@ -85,20 +85,26 @@ if __name__ == "__main__":
         usage="%(prog)s --path <path_to_cert>",
         add_help=False
     )
-    
-    parser.add_argument('--path', type=str, metavar='<path>', help="REQUIRED: Path to the .cer file")
-    parser.add_argument('--version', action='store_true', help="Show program's version number and exit")
-    parser.add_argument('--help', action='store_true', help="Show this help message and exit")
+    # Faster way to use TMM
+    parser.add_argument('--i', type=str, metavar='<path>', help="REQUIRED: Path to the .cer file")
+    parser.add_argument('--v', action='store_true', help="Show program's version number and exit")
+    parser.add_argument('--h', action='store_true', help="Show this help message and exit")
+    parser.add_argument('--uc', action='store_true', help="Checks for Updates.")
     
     args, unknown = parser.parse_known_args()
 
-    if args.help:
+    if args.h:
         parser.print_help()
         sys.exit(0)
 
-    if args.version:
+    if args.v:
         logo()
         print(f"Version: {CURRENT_VERSION}")
+        sys.exit(0)
+
+    if args.uc:
+        logo()
+        check_for_updates()
         sys.exit(0)
 
     if not is_admin():
@@ -117,7 +123,7 @@ if __name__ == "__main__":
     target_store_name = "Root"
     cert_file_path = None
 
-    if args.path:
+    if args.i:
         p = args.path.strip().strip('"')
         if os.path.exists(p) and p.lower().endswith('.cer'):
             cert_file_path = p

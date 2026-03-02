@@ -50,13 +50,15 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 - Trust My Msix!'s entire CLI can be bypassed by using the argument '--path' :
       
       tmm --path <path>
-      # python tmm.py --path <path> if using Python File.
-- Help and Version can be accessed as follows :
+      # python tmm.py --i <path> if using Python File.
+- Help, Version and Update Check can be accessed as follows :
       
-      tmm --help
-      # python tmm.py --help if using Python File.
-      tmm --version
-      # python tmm.py --version if using Python File.
+      tmm --h
+      # python tmm.py --h if using Python File.
+      tmm --v
+      # python tmm.py --v if using Python File.
+      tmm --uc
+      # python tmm.py --uc if using Python File.
 
 ---
 
