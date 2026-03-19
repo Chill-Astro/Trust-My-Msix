@@ -25,7 +25,7 @@ DisableProgramGroupPage=yes
 LicenseFile=C:\Users\Master\Chill-Astro\Trust-My-Msix\LICENSE
 WizardStyle=modern dynamic windows11
 PrivilegesRequired=admin
-OutputBaseFilename=TMM-Setup
+OutputBaseFilename=Setup
 SolidCompression=yes
 DisableWelcomePage=no
 
