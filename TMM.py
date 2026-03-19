@@ -51,10 +51,11 @@ def importCert(certificatePath, storeLocation, storeName): # The Magic of this T
         return
 
     try:
-        powershellCommand = f"Import-Certificate -FilePath \"{certificatePath}\" -CertStoreLocation Cert:\\{storeLocation}\\{storeName}"
         subprocess.run(
-            ['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-Command', powershellCommand],
-            check=True, capture_output=True, text=True
+            ['certutil', '-addstore', storeName, certificatePath],
+            check=True,
+            capture_output=True,
+            text=True
         )
         print("Import Succeeded! ✅\n")
     except subprocess.CalledProcessError as e:
