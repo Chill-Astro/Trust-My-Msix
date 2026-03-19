@@ -59,7 +59,7 @@ STEP 4 : Run
 
 ## Usage :
 
-- Trust My Msix! can be easily used by just running the loose `.exe`
+- Trust My Msix! can be easily used by just running the Portable `.exe`
 - Trust My Msix!'s entire CLI can be bypassed by using the argument '--i' :
       
       tmm --i <path>
