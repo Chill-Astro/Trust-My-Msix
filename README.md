@@ -5,7 +5,7 @@
 
 <div align="center">
   
-Trust My Msix! is a Simple Command-Line App designed to import `.cer` files to the `Trusted Root Certification Authourities Store` in Windows in a few keystrokes! This speeds up the process of certificate importing for `Self-Signed Msix Packages on Windows` and it is very helpful to non tech-savvy users. 
+`Trust My Msix!` is a Simple Command-Line App designed to import `.cer` files to the `Trusted Root Certification Authourities Store` in Windows in a few keystrokes! This speeds up the process of certificate importing for `Self-Signed Msix Packages on Windows` and it is very helpful to non tech-savvy users. 
   
 **Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.2`
 
@@ -15,13 +15,13 @@ Trust My Msix! is a Simple Command-Line App designed to import `.cer` files to t
 
 ## ⚠️ WARNING! :
 
-This is the original version of Trust My Msix! Don't trust Counterfeit Versions. Importing random certificates is dangerous. Please proceed with care and import Certificates of only Open-Source Software downloaded from Trusted Sources or if testing your own app.
+This is the original version of Trust My Msix! Don't trust Counterfeit Versions. Importing Random Certificates is DANGEROUS. Import Certificates of only Open-Source Software downloaded from Trusted Sources or if Testing your own App.
 
 ---
 
 ## Key Features :
 
-- Extemely Lightweight [It's a Terminal-based App]. ✅
+- Extemely Lightweight ( It's a Terminal-based App ). ✅
 - Update Checking Support. ✅
 - Extremely Quick and Reliable. ✅
 - Zero Instructions Needed for Novice Users. ✅
@@ -31,26 +31,40 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 
 ## Installing Trust My Msix! from Winget :
 
-    winget install Chill-Astro.TMM
+    winget install Chill-Astro.TMM    
 
 ---
     
 
-## Installation and Requirements :
+## Building :
 
-- Any system with Python installed.
-- Requires Requests package to be installed via pip.
-- No Python installation needed if using Installer or `TMM.exe` on Windows Systems!
+STEP 1 : Install Python 
+
+    winget install python
+
+STEP 2 : Install Dependencies 
+
+    pip install -r Reqs.txt
+
+STEP 3 : Build
+
+    pyinstaller -F -i TMM.ico TMM.py
+
+STEP 4 : Run
+
+    tmm --i <path> 
+    # Use pyhton tmm.py - i <path> if not Building
 
 ---
 
 ## Usage :
 
-- Trust My Msix! can be easily used by just running the lose `.exe`
-- Trust My Msix!'s entire CLI can be bypassed by using the argument '--path' :
+- Trust My Msix! can be easily used by just running the loose `.exe`
+- Trust My Msix!'s entire CLI can be bypassed by using the argument '--i' :
       
-      tmm --path <path>
+      tmm --i <path>
       # python tmm.py --i <path> if using Python File.
+  
 - Help, Version and Update Check can be accessed as follows :
       
       tmm --h
@@ -64,14 +78,9 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 
 ## Preview :
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6cb9fe44-acab-48d9-9ff9-354c751200cb" />
-
----
-
-## Installation and Requirements :
-
-- Any system with Python installed.
-- No Python installation needed if using Installer or `tmm.exe` on Windows.
+<kbd>
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9404a45d-7de3-4653-83ec-c96d40168fff" />
+</kbd>
 
 ---
 
