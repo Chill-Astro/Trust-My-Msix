@@ -1,16 +1,14 @@
-import requests
-import subprocess
-import os
-import sys
-import ctypes
-import argparse
+import requests, subprocess, os, sys, ctypes, argparse
 
-UPDATE_VERSION_URL = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/8b0c95d2e0b718914cd3588a0b142f971da0b941/TMM_V.txt"
-CURRENT_VERSION = "3.14.1.2"
+verUrl = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/TMM_V.txt" # Gist URL.
+
+ver = "3.14.1.2" # New Name + Argument Update
+
+# Msix is GREAT! Very much better than typing 'Yes' a 100 times. Only thing..... you need to buy a certificate to sign the app. Soooooo, I made this to Support Hobbyists and Students who JUST WANT TO INSTALL A FOSS PROJECT. ( Ah Lamina ✦ !)
 
 def logo():
     print(r"""
- _____ ___  _   _  ___ _____   __  __  __    __ __  __  ___  ___ __  __  _ 
+ _____ ___  _   _  ___ _____   __  __  __   __  __  __  ___  ___ __  __  _ 
 |_   _| _ \| | | |/ __|_   _| |  \/  | \ \ / / |  \/  |/ __||_ _|\ \/ / | |
   | | |   /| |_| |\__ \ | |   | |\/| |  \ V /  | |\/| |\__ \ | |  >  <  |_|
   |_| |_|_\ \___/ |___/ |_|   |_|  |_|   |_|   |_|  |_||___/|___|/_/\_\ (_)
@@ -18,62 +16,73 @@ def logo():
 (C) Chill-Astro | 2026
           """)
 
-def is_admin():
+def warning(): # Ay DO NUT IMPORT RANDOM CERTIFICATES FROM THE INTERNET!
+    print("⚠️ WARNING! ⚠️\n\nImporting Random Certificates is DANGEROUS!\nImport Certificates of only Open-Source Software downloaded from Trusted Sources or if Testing your own App!\n")
+
+def isAdmin(): # If no then Sorry :)
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
         return False
 
-def run_as_admin():
-    if not is_admin():
+def runAsAdmin(): # Just helping you if you forgot 'sudo tmm -i <path>' ! ( Btw that's a shortcut! )
+    if "--elevated" in sys.argv:
+        return True
+    if not isAdmin():
         try:
-            script = os.path.abspath(sys.argv[0])
-            params = " ".join([f'"{arg}"' if ' ' in arg else arg for arg in sys.argv[1:]])
-            ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, f'"{script}" {params}', None, 1)
-            return True
+            scriptPath = os.path.abspath(sys.argv[0])
+            params = " ".join(sys.argv[1:] + ["--elevated"])
+            ctypes.windll.shell32.ShellExecuteW(
+                None, "runas", sys.executable, f'"{scriptPath}" {params}', None, 1
+            )
+            return False
         except:
             return False
     else:
         return True
 
-def import_cert_logic(certificate_path, store_location, store_name):
-    if store_location.lower() == 'localmachine' and not is_admin():
-        print("Error: Administrator privileges required.")
-        return 
+def versionToTuple(v): # Coverts Version to a Tuple ( Wait I forgot what a Tuple is.... Oh an Immutable Array! Haha JAVA Brainrot! )
+    parts = v.strip().split('.')
+    return tuple(int(p) for p in parts if p.isdigit())
+
+def importCert(certificatePath, storeLocation, storeName): # The Magic of this Tool ( Ay stop calling everything as an App this is Windows not MacOS! )
+    if storeLocation.lower() == 'localmachine' and not isAdmin():
+        print("Error : Administrator privileges required.")
+        return
 
     try:
-        powershell_command = f"Import-Certificate -FilePath \"{certificate_path}\" -CertStoreLocation Cert:\\{store_location}\\{store_name}"
-        subprocess.run(['powershell', '-Command', powershell_command], check=True, capture_output=True, text=True)
-        print("\nImport Succeeded!\n") 
+        powershellCommand = f"Import-Certificate -FilePath \"{certificatePath}\" -CertStoreLocation Cert:\\{storeLocation}\\{storeName}"
+        subprocess.run(
+            ['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-Command', powershellCommand],
+            check=True, capture_output=True, text=True
+        )
+        print("Import Succeeded! ✅\n")
     except subprocess.CalledProcessError as e:
         print(f"Error: {e.stderr}")
-    except Exception as e:         
+    except Exception as e:
         print(f"Error: {e}")
 
-def check_for_updates():    
+def checkForUpdates(): # I hope you are connected to the internet for this!
     print("Status - ", end="")
-    try:        
-        response = requests.get(UPDATE_VERSION_URL, timeout=5)
+    try:
+        response = requests.get(verUrl, timeout=5)
         response.raise_for_status()
-        latest_version_str = response.text.strip()
+        latestVersionStr = response.text.strip()
 
-        def version_tuple(v):
-            return tuple(map(int, v.split('.')))
-
-        if version_tuple(latest_version_str) > version_tuple(CURRENT_VERSION):                        
-            print(f"Update Available : {latest_version_str}")                                                               
-        elif latest_version_str == CURRENT_VERSION:            
-            print("Up to Date.\n")
+        if versionToTuple(latestVersionStr) > versionToTuple(ver):
+            print(f"Update Available : {latestVersionStr} 🎉\n")
+        elif latestVersionStr == ver:
+            print("Up to Date 🎉\n")
         else:
-            print("DEV. Build\n")
-    except:        
-        print("Check failed.\n")
+            print("DEV. Build ⚠️\n")
+    except Exception as e:
+        print(f"Check failed ❌ ({e})\n")
 
-class CustomParser(argparse.ArgumentParser):
+class CustomParser(argparse.ArgumentParser): # Thou shalt see me on Binbows
     def print_help(self):
         logo()
         super().print_help()
-    
+
     def error(self, message):
         logo()
         sys.stderr.write(f'Error: {message}\n')
@@ -81,17 +90,17 @@ class CustomParser(argparse.ArgumentParser):
         sys.exit(2)
 
 if __name__ == "__main__":
-    parser = CustomParser(        
-        usage="%(prog)s --path <path_to_cert>",
+    parser = CustomParser(
+        usage="%(prog)s --i <path_to_cert>",
         add_help=False
     )
-    # Faster way to use TMM
-    parser.add_argument('--i', type=str, metavar='<path>', help="REQUIRED: Path to the .cer file")
-    parser.add_argument('--v', action='store_true', help="Show program's version number and exit")
-    parser.add_argument('--h', action='store_true', help="Show this help message and exit")
-    parser.add_argument('--uc', action='store_true', help="Checks for Updates.")
-    
-    args, unknown = parser.parse_known_args()
+    parser.add_argument('--i', type=str, metavar='<path>', help="Path to the .cer file")
+    parser.add_argument('--v', action='store_true', help="Show version")
+    parser.add_argument('--h', action='store_true', help="Show help")
+    parser.add_argument('--uc', action='store_true', help="Check updates")
+    parser.add_argument('--elevated', action='store_true', help=argparse.SUPPRESS)
+
+    args = parser.parse_args()
 
     if args.h:
         parser.print_help()
@@ -99,50 +108,45 @@ if __name__ == "__main__":
 
     if args.v:
         logo()
-        print(f"Version: {CURRENT_VERSION}")
+        print(f"Version: {ver}")
         sys.exit(0)
 
     if args.uc:
         logo()
-        check_for_updates()
+        checkForUpdates()
         sys.exit(0)
 
-    if not is_admin():
-        if run_as_admin():
-            sys.exit(0)
-        else:
-            logo()
-            print("Admin rights required.")
-            input("Press Enter to exit...")
-            sys.exit(1)
+    if not runAsAdmin():
+        sys.exit(0)
 
     logo()
-    check_for_updates()
+    checkForUpdates()
+    warning()
 
-    target_store_location = "LocalMachine"
-    target_store_name = "Root"
-    cert_file_path = None
+    targetStoreLocation = "LocalMachine"
+    targetStoreName = "Root"
+    certFilePath = None
 
     if args.i:
-        p = args.path.strip().strip('"')
-        if os.path.exists(p) and p.lower().endswith('.cer'):
-            cert_file_path = p
+        pathValue = args.i.strip().strip('"')
+        if os.path.exists(pathValue) and pathValue.lower().endswith('.cer'):
+            certFilePath = pathValue
         else:
-            print(f"Invalid path: {p}")
+            print(f"Error : Invalid Path - {pathValue} ❌\n")
 
-    if cert_file_path is None:
+    if certFilePath is None:
         while True:
-            p_in = input("Enter Full Path of the .cer file: ").strip().strip('"')
-            if not p_in:
+            inputPath = input("Enter Full Path of your .cer file : ").strip().strip('"')
+            if not inputPath:
                 continue
-            if os.path.exists(p_in) and p_in.lower().endswith('.cer'):
-                cert_file_path = p_in
+            if os.path.exists(inputPath) and inputPath.lower().endswith('.cer'):
+                certFilePath = inputPath
                 break
             else:
-                print("Invalid file. Ensure path is correct and ends in .cer.\n")
+                print("Error : Invalid File. ❌\n")
 
-    print(f"\nImporting to Trusted Root Certification Authourities...")
-    import_cert_logic(cert_file_path, target_store_location, target_store_name)
+    print(f"\nImporting to Trusted Root Certification Authorities ♪(´▽｀)\n")
+    importCert(certFilePath, targetStoreLocation, targetStoreName)
 
-    input("Press Enter to exit...")
+    input("Press Enter to Exit...")
     sys.exit(0)
