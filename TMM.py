@@ -28,18 +28,27 @@ def isAdmin(): # If no then Sorry :)
 def runAsAdmin(): # Just helping you if you forgot 'sudo tmm -i <path>' ! ( Btw that's a shortcut! )
     if "--elevated" in sys.argv:
         return True
+
     if not isAdmin():
-        try:
-            scriptPath = os.path.abspath(sys.argv[0])
-            params = " ".join(sys.argv[1:] + ["--elevated"])
+        # sys.executable is the absolute path to TMM.exe when frozen
+        target_exe = os.path.abspath(sys.executable)
+        # Build arguments, ensuring we keep any passed cert paths
+        # and add the --elevated flag
+        args_list = sys.argv[1:]
+        if "--elevated" not in args_list:
+            args_list.append("--elevated")
+            
+        params = " ".join([f'"{arg}"' for arg in args_list])
+
+        try:            
             ctypes.windll.shell32.ShellExecuteW(
-                None, "runas", sys.executable, f'"{scriptPath}" {params}', None, 1
+                None, "runas", target_exe, params, None, 1
             )
+            return False  # Exit the current non-admin process
+        except Exception as e:
+            print(f"Elevation failed: {e}")
             return False
-        except:
-            return False
-    else:
-        return True
+    return True
 
 def versionToTuple(v): # Coverts Version to a Tuple ( Wait I forgot what a Tuple is.... Oh an Immutable Array! Haha JAVA Brainrot! )
     parts = v.strip().split('.')
