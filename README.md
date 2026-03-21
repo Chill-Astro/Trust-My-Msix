@@ -6,6 +6,10 @@
 <div align="center">
   
 `Trust My Msix!` is a Simple Command-Line App designed to import `.cer` files to the `Trusted Root Certification Authourities Store` in Windows in a few keystrokes! This speeds up the process of certificate importing for `Self-Signed Msix Packages on Windows` and it is very helpful to non tech-savvy users. 
+
+The `.msix` format is AWESOME and leaves far less traces and doesn't need pressing 'Yes' a 100 times. But an `.msix` is allowed to be installed if the `Certificate` is signed by a `Certificate Authourity`, and getting a Certificate from a CA costs Money 💵.
+
+Normally Users have to go through the Import process of a Self-Signed Certificate which is TEDIOUS and CONFUSING, especially for Newbies. `This tool makes this process take 1 second`!
   
 **Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.2`
 
@@ -21,7 +25,7 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 
 ## Key Features :
 
-- Extemely Lightweight ( It's a Terminal-based App ). ✅
+- Extemely Lightweight ( It's Terminal-based ). ✅
 - Update Checking Support. ✅
 - Extremely Quick and Reliable. ✅
 - Zero Instructions Needed for Novice Users. ✅
@@ -34,7 +38,23 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
     winget install Chill-Astro.TMM    
 
 ---
-    
+
+## How it Works? 
+
+Transparency is the key Trust and you can't Trust `Trust My Msix!` if it wasn't Transparent!
+
+- This app uses `certutil` on Windows to import `.cer` files.
+- This tool uses the following command :
+  
+      certutil -addstore Root <path>
+
+- Of course making it easier for Newbies is better :
+
+      tmm -i <path>
+
+- This command just saves developer hassle and encourages more hobbyists to make FOSS Apps.
+
+---    
 
 ## Building :
 
@@ -42,15 +62,20 @@ STEP 1 : Install Python
 
     winget install python
 
-STEP 2 : Install Dependencies 
+STEP 2 : Clone this Repository :
+
+    git clone https://github.com/Chill-Astro/Trust-My-Msix.git
+    cd Trust-My-Msix
+
+STEP 3 : Install Dependencies 
 
     pip install -r Reqs.txt
 
-STEP 3 : Build
+STEP 4 : Build
 
     pyinstaller -F -i TMM.ico TMM.py
 
-STEP 4 : Run
+STEP 5 : Run
 
     tmm --i <path> 
     # Use pyhton tmm.py - i <path> if not Building
