@@ -109,9 +109,9 @@ STEP 5 : Run
 
 ---
 
-## Wallpaper Credit :
+## Credit :
 
-- [@Lisa on Pexels for Pink Flowers Photograph](https://www.pexels.com/photo/pink-flowers-photograph-1083822/)
+- Wallpaper by [@Lisa on Pexels](https://www.pexels.com/photo/pink-flowers-photograph-1083822/)
 
 ---
 
