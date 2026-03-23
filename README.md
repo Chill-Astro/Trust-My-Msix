@@ -109,6 +109,12 @@ STEP 5 : Run
 
 ---
 
+## Wallpaper Credit :
+
+- [@Lisa on Pexels for Pink Flowers Photograph](https://www.pexels.com/photo/pink-flowers-photograph-1083822/)
+
+---
+
 ## ⚠️ IMPORTANT NOTICE ⚠️
 
 Please be aware: There are fraudulent repositories on GitHub that are cloning this project's name and using AI-generated readmes, but they contain **completely random and unrelated files in each release**. These are NOT official versions of this project.
