@@ -1,5 +1,5 @@
 #define MyAppName "Trust My Msix!"
-#define MyAppVersion "3.14.1.2"
+#define MyAppVersion "3.14.1.3"
 #define MyAppPublisher "Chill-Astro"
 #define MyAppURL "https://github.com/Chill-Astro/Trust-My-Msix"
 #define MyAppExeName "TMM.exe"
@@ -22,7 +22,7 @@ ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
-LicenseFile=C:\Users\Master\Chill-Astro\Trust-My-Msix\LICENSE
+LicenseFile=C:\Users\Master\Chill-Astro\Trust-My-Msix\LICENSE.txt
 WizardStyle=modern dynamic windows11
 PrivilegesRequired=admin
 OutputBaseFilename=Setup
