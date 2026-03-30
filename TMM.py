@@ -2,7 +2,7 @@ import requests, subprocess, os, sys, ctypes, argparse
 
 verUrl = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/TMM_V.txt" # Gist URL.
 
-ver = "3.14.1.2" # New Name + Argument Update
+ver = "3.14.1.3" # Made Argument Mode Silent + Prevented Linux and MacOS from running this!
 
 # Msix is GREAT! Very much better than typing 'Yes' a 100 times. Only thing..... you need to buy a certificate to sign the app. Soooooo, I made this to Support Hobbyists and Students who JUST WANT TO INSTALL A FOSS PROJECT. ( Ah Lamina ✦ !)
 
@@ -25,30 +25,31 @@ def isAdmin(): # If no then Sorry :)
     except:
         return False
 
-def runAsAdmin(): # Just helping you if you forgot 'sudo tmm -i <path>' ! ( Btw that's a shortcut! )
+def runAsAdmin(): # Just helping you if you forgot 'sudo tmm -i <path>' ! ( Btw that's a shortcut! ) 
     if "--elevated" in sys.argv:
         return True
-
     if not isAdmin():
-        # sys.executable is the absolute path to TMM.exe when frozen
-        target_exe = os.path.abspath(sys.executable)
-        # Build arguments, ensuring we keep any passed cert paths
-        # and add the --elevated flag
-        args_list = sys.argv[1:]
+        if getattr(sys, 'frozen', False):
+            # Running as a compiled EXE
+            target_exe = sys.executable
+            args_list = sys.argv[1:]
+        else:
+            # Running as a Python script (.py)
+            target_exe = sys.executable
+            args_list = [sys.argv[0]] + sys.argv[1:]
+
         if "--elevated" not in args_list:
             args_list.append("--elevated")
-            
         params = " ".join([f'"{arg}"' for arg in args_list])
-
         try:            
             ctypes.windll.shell32.ShellExecuteW(
                 None, "runas", target_exe, params, None, 1
             )
-            return False  # Exit the current non-admin process
+            return False 
         except Exception as e:
             print(f"Elevation failed: {e}")
             return False
-    return True
+    return True   
 
 def versionToTuple(v): # Coverts Version to a Tuple ( Wait I forgot what a Tuple is.... Oh an Immutable Array! Haha JAVA Brainrot! )
     parts = v.strip().split('.')
@@ -58,7 +59,6 @@ def importCert(certificatePath, storeLocation, storeName): # The Magic of this T
     if storeLocation.lower() == 'localmachine' and not isAdmin():
         print("Error : Administrator privileges required.")
         return
-
     try:
         subprocess.run(
             ['certutil', '-addstore', storeName, certificatePath],
@@ -77,11 +77,12 @@ def checkForUpdates(): # I hope you are connected to the internet for this!
     try:
         response = requests.get(verUrl, timeout=5)
         response.raise_for_status()
-        latestVersionStr = response.text.strip()
-
-        if versionToTuple(latestVersionStr) > versionToTuple(ver):
+        latestVersionStr = response.text.strip()        
+        latest_tup = versionToTuple(latestVersionStr)
+        current_tup = versionToTuple(ver)
+        if latest_tup > current_tup:            
             print(f"Update Available : {latestVersionStr} 🎉\n")
-        elif latestVersionStr == ver:
+        elif latest_tup == current_tup:
             print("Up to Date 🎉\n")
         else:
             print("DEV. Build ⚠️\n")
@@ -99,7 +100,14 @@ class CustomParser(argparse.ArgumentParser): # Thou shalt see me on Binbows
         self.print_help()
         sys.exit(2)
 
-if __name__ == "__main__":
+if __name__ == "__main__":    
+
+    if os.name != 'nt':
+        logo()
+        print("Trust My Msix! is 🪟 Windows ONLY!\nThis is not for 🐧 Linux or 🍎 MacOS!")
+        input("\nPress Enter to Exit...")
+        sys.exit(1)
+
     parser = CustomParser(
         usage="%(prog)s --i <path_to_cert>",
         add_help=False
@@ -128,7 +136,7 @@ if __name__ == "__main__":
 
     if not runAsAdmin():
         sys.exit(0)
-
+    
     logo()
     checkForUpdates()
     warning()
@@ -158,5 +166,7 @@ if __name__ == "__main__":
     print(f"\nImporting to Trusted Root Certification Authorities ♪(´▽｀)\n")
     importCert(certFilePath, targetStoreLocation, targetStoreName)
 
-    input("Press Enter to Exit...")
-    sys.exit(0)
+    if not args.i :
+        input("Press Enter to Exit...")
+
+sys.exit(0)

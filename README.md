@@ -11,7 +11,7 @@ The `.msix` format is AWESOME and leaves far less traces and doesn't need pressi
 
 Normally Users have to go through the Import process of a Self-Signed Certificate which is TEDIOUS and CONFUSING, especially for Newbies. `This tool makes this process take 1 second`!
   
-**Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.2`
+**Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.3`
 
 **Execution Alias :** `tmm.exe`
 
