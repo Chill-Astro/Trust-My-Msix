@@ -11,7 +11,7 @@ The `.msix` format is AWESOME and leaves far less traces and doesn't need pressi
 
 Normally Users have to go through the Import process of a Self-Signed Certificate which is TEDIOUS and CONFUSING, especially for Newbies. `This tool makes this process take 1 second`!
   
-**Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.3`
+**Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.4`
 
 **Execution Alias :** `tmm.exe`
 
@@ -89,15 +89,19 @@ STEP 5 : Run
       
       tmm --i <path>
       # python tmm.py --i <path> if using Python File.
+      # .\tmm --i <path> if using Powershell on Portable exe.
   
 - Help, Version and Update Check can be accessed as follows :
       
       tmm --h
       # python tmm.py --h if using Python File.
+      # .\tmm --h if using Powershell on Portable exe.
       tmm --v
       # python tmm.py --v if using Python File.
+      # .\tmm --v if using Powershell on Portable exe.
       tmm --uc
       # python tmm.py --uc if using Python File.
+      # .\tmm --uc if using Powershell on Portable exe.
 
 ---
 
