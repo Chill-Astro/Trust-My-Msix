@@ -2,7 +2,7 @@ import requests, subprocess, os, sys, ctypes, argparse
 
 verUrl = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/TMM_V.txt" # Gist URL.
 
-ver = "3.14.1.3" # Made Argument Mode Silent + Prevented Linux and MacOS from running this!
+ver = "3.14.1.4" # Drag and Drop Support!
 
 # Msix is GREAT! Very much better than typing 'Yes' a 100 times. Only thing..... you need to buy a certificate to sign the app. Soooooo, I made this to Support Hobbyists and Students who JUST WANT TO INSTALL A FOSS PROJECT. ( Ah Lamina ✦ !)
 
@@ -11,10 +11,28 @@ def logo():
  _____ ___  _   _  ___ _____   __  __  __   __  __  __  ___  ___ __  __  _ 
 |_   _| _ \| | | |/ __|_   _| |  \/  | \ \ / / |  \/  |/ __||_ _|\ \/ / | |
   | | |   /| |_| |\__ \ | |   | |\/| |  \ V /  | |\/| |\__ \ | |  >  <  |_|
-  |_| |_|_\ \___/ |___/ |_|   |_|  |_|   |_|   |_|  |_||___/|___|/_/\_\ (_)
+  |_| |_|_\ \___/ |___/ |_|   |_|  |_|   |_|   |_|  |_||___/|___//_/\_\ (_)
 
 (C) Chill-Astro | 2026
-          """)
+""")
+    
+def freedom(): # For the Freedom Fighters out there! ( You know who you are! ;) )
+    print("""
+Sarfaroshi ki tamanna ab hamare dil mein hai,
+Dekhna hai zor kitna baazu-e-qaatil mein hai.
+
+Waqt aane de bata denge tujhe ae aasmaan,
+Hum abhi se kya bataayein kya hamare dil mein hai.
+
+Khainch kar laayi hai sab ko qatl hone ki umeed,
+Aashiqon ka aaj jamghat koocha-e-qaatil mein hai.
+
+Hai liye hathiyaar dushman taak mein baitha udhar,
+Aur hum taiyaar hain seena liye apna idhar.
+
+Khoon se khelenge holi gar vatan mushkil mein hai,
+Sarfaroshi ki tamanna ab hamare dil mein hai.
+""")
 
 def warning(): # Ay DO NUT IMPORT RANDOM CERTIFICATES FROM THE INTERNET!
     print("⚠️ WARNING! ⚠️\n\nImporting Random Certificates is DANGEROUS!\nImport Certificates of only Open-Source Software downloaded from Trusted Sources or if Testing your own App!\n")
@@ -66,14 +84,14 @@ def importCert(certificatePath, storeLocation, storeName): # The Magic of this T
             capture_output=True,
             text=True
         )
-        print("Import Succeeded! ✅\n")
+        print("Import Succeeded! ✅")
     except subprocess.CalledProcessError as e:
         print(f"Error: {e.stderr}")
     except Exception as e:
         print(f"Error: {e}")
 
 def checkForUpdates(): # I hope you are connected to the internet for this!
-    print("Status - ", end="")
+    print(f"Version - {ver} | Status - ", end="")
     try:
         response = requests.get(verUrl, timeout=5)
         response.raise_for_status()
@@ -112,11 +130,13 @@ if __name__ == "__main__":
         usage="%(prog)s --i <path_to_cert>",
         add_help=False
     )
+    parser.add_argument('dropped_path', type=str, nargs='?', help=argparse.SUPPRESS) # For Drag & Drop support
     parser.add_argument('--i', type=str, metavar='<path>', help="Path to the .cer file")
     parser.add_argument('--v', action='store_true', help="Show version")
     parser.add_argument('--h', action='store_true', help="Show help")
     parser.add_argument('--uc', action='store_true', help="Check updates")
     parser.add_argument('--elevated', action='store_true', help=argparse.SUPPRESS)
+    parser.add_argument('--vande-mataram', action='store_true', help=argparse.SUPPRESS)
 
     args = parser.parse_args()
 
@@ -134,6 +154,11 @@ if __name__ == "__main__":
         checkForUpdates()
         sys.exit(0)
 
+    if args.vande_mataram:
+        logo()
+        freedom()
+        sys.exit(0)
+
     if not runAsAdmin():
         sys.exit(0)
     
@@ -145,28 +170,33 @@ if __name__ == "__main__":
     targetStoreName = "Root"
     certFilePath = None
 
-    if args.i:
-        pathValue = args.i.strip().strip('"')
+    # Handle file path from either --i flag or direct drag-and-drop
+    initialPath = args.i or args.dropped_path
+
+    if initialPath:
+        pathValue = initialPath.strip().strip('"')
         if os.path.exists(pathValue) and pathValue.lower().endswith('.cer'):
             certFilePath = pathValue
         else:
-            print(f"Error : Invalid Path - {pathValue} ❌\n")
+            print(f"\nError : Invalid Path - {pathValue} ❌\n")
 
     if certFilePath is None:
         while True:
-            inputPath = input("Enter Full Path of your .cer file : ").strip().strip('"')
+            inputPath = input("Enter Full Path or Drop your .cer file : ").strip().strip('"')
             if not inputPath:
                 continue
             if os.path.exists(inputPath) and inputPath.lower().endswith('.cer'):
                 certFilePath = inputPath
                 break
+            if inputPath.strip("").upper() == "VANDE MATARAM" or inputPath.strip("").upper() == "108":
+                freedom()
+                continue
             else:
-                print("Error : Invalid File. ❌\n")
+                print("\nError : Invalid File. ❌\n")
 
     print(f"\nImporting to Trusted Root Certification Authorities ♪(´▽｀)\n")
     importCert(certFilePath, targetStoreLocation, targetStoreName)
 
-    if not args.i :
-        input("Press Enter to Exit...")
+    if not args.i : input("\nPress Enter to Exit... ")      
 
 sys.exit(0)

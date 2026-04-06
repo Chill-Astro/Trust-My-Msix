@@ -1,5 +1,5 @@
 #define MyAppName "Trust My Msix!"
-#define MyAppVersion "3.14.1.3"
+#define MyAppVersion "3.14.1.4"
 #define MyAppPublisher "Chill-Astro"
 #define MyAppURL "https://github.com/Chill-Astro/Trust-My-Msix"
 #define MyAppExeName "TMM.exe"
