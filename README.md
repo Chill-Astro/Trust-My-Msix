@@ -33,6 +33,23 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 
 ---
 
+## Version Structure :
+
+<div align="center">
+
+<H2>
+
+v`3.14`.`1.4`
+
+</H2>
+
+</div>
+
+- `3.14` -> Python Version used for Release. ( NOT a Strict Requirement for Building from Source. *BUT I AM CUTTING EDGE!* )
+- `1.4` -> Version ( Since Trust My Msix is NOT an App, she just uses Decimals in Version Number that Increment by `0.1` )
+
+---
+
 ## Installing Trust My Msix! from Winget :
 
     winget install Chill-Astro.TMM    
