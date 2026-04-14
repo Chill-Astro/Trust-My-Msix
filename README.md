@@ -123,14 +123,6 @@ STEP 5 : Run
 
 ---
 
-## Preview :
-
-<kbd>
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9404a45d-7de3-4653-83ec-c96d40168fff" />
-</kbd>
-
----
-
 ## Credit :
 
 - Wallpaper by [@Lisa on Pexels](https://www.pexels.com/photo/pink-flowers-photograph-1083822/)
