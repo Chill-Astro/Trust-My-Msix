@@ -1,7 +1,8 @@
-<p align="center">
-  <img src="https://github.com/Chill-Astro/MsixCertImportTool/blob/main/TMM.ico" width="128px" height="128px" alt="TMM Logo">
+<p align="center">  
+  <kbd>
+  <img alt="TMM Promo" src="https://github.com/user-attachments/assets/0fe9e160-2148-4b74-9142-2163a6ce679f" />
+    </kbd>
 </p>
-<h1 align="center">Trust My Msix!</h1>
 
 <div align="center">
   
