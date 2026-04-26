@@ -48,8 +48,8 @@ v`3.14`.`1.4`
 
 </div>
 
-- `3.14` -> Python Version used for Release. ( NOT a Strict Requirement for Building from Source. *BUT I AM CUTTING EDGE!* )
-- `1.4` -> Version ( Since Trust My Msix is NOT an App, She just uses Decimals in Version Number that Increment by `0.1` )
+- `3.14` -> Python Version ( NOT a Strict Requirement. *BUT I AM CUTTING EDGE!* )
+- `1.4` -> App Version ( Incremented by `0.1` Every Release )
 
 ---
 
