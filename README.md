@@ -16,6 +16,8 @@ Normally Users have to go through the Import process of a Self-Signed Certificat
 
 **Execution Alias :** `tmm.exe`
 
+**Codename** : `TMM`, formerly `MCIT ( till v1.1 )`
+
 </div>
 
 ## ⚠️ WARNING! :
@@ -26,7 +28,7 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 
 ## Key Features :
 
-- Extemely Lightweight ( It's Terminal-based ). ✅
+- Extemely Lightweight ( She's Terminal-based ). ✅
 - Update Checking Support. ✅
 - Extremely Quick and Reliable. ✅
 - Zero Instructions Needed for Novice Users. ✅
@@ -47,7 +49,7 @@ v`3.14`.`1.4`
 </div>
 
 - `3.14` -> Python Version used for Release. ( NOT a Strict Requirement for Building from Source. *BUT I AM CUTTING EDGE!* )
-- `1.4` -> Version ( Since Trust My Msix is NOT an App, she just uses Decimals in Version Number that Increment by `0.1` )
+- `1.4` -> Version ( Since Trust My Msix is NOT an App, She just uses Decimals in Version Number that Increment by `0.1` )
 
 ---
 
@@ -57,12 +59,12 @@ v`3.14`.`1.4`
 
 ---
 
-## How it Works? 
+## How she Works? 
 
-Transparency is the key Trust and you can't Trust `Trust My Msix!` if it wasn't Transparent!
+Transparency is the key Trust and you can't Trust `Trust My Msix!` if she wasn't Transparent!
 
-- This app uses `certutil` on Windows to import `.cer` files.
-- This tool uses the following command :
+- She uses `certutil` on Windows to import `.cer` files.
+- The following command is used :
   
       certutil -addstore Root <path>
 
