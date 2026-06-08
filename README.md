@@ -26,12 +26,6 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 
 ---
 
-## HALT ON DEVELOPMENT :
-
-- This Project is now a "Complete Product" in my Vision. So I have no other Ideas.
-  
---- 
-
 ## Key Features :
 
 - Extemely Lightweight ( She's Terminal-based ). ✅
