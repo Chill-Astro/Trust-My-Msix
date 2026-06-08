@@ -1,8 +1,8 @@
 #define MyAppName "Trust My Msix!"
-#define MyAppVersion "3.14.1.4"
+#define MyAppVersion "3.14.1.5"
 #define MyAppPublisher "Chill-Astro"
 #define MyAppURL "https://github.com/Chill-Astro/Trust-My-Msix"
-#define MyAppExeName "TMM.exe"
+#define MyAppExeName "tmm.exe"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".myp"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
