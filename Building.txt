@@ -1,9 +1,9 @@
 STEP 1 : Install all Dependencies 
 
-pip install -r Reqs.txt
+pip install -r reqs.txt
 
 STEP 2 : To export using Pyinstaller
 
-pyinstaller -F -i TMM.ico TMM.py 
+pyinstaller -F -i tmm.ico tmm.py 
 
 Enjoy! :)

@@ -1,41 +1,67 @@
 import requests, subprocess, os, sys, ctypes, argparse
+from colorama import init, Fore, Style
 
 verUrl = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/TMM_V.txt" # Gist URL.
 
-ver = "3.14.1.4" # Drag and Drop Support!
+ver = "3.14.1.5" # Maintainence Update.
+
+init(convert=True)
 
 # Msix is GREAT! Very much better than typing 'Yes' a 100 times. Only thing..... you need to buy a certificate to sign the app. Soooooo, I made this to Support Hobbyists and Students who JUST WANT TO INSTALL A FOSS PROJECT. ( Ah Lamina ✦ !)
 
 def logo():
-    print(r"""
- _____ ___  _   _  ___ _____   __  __  __   __  __  __  ___  ___ __  __  _ 
-|_   _| _ \| | | |/ __|_   _| |  \/  | \ \ / / |  \/  |/ __||_ _|\ \/ / | |
-  | | |   /| |_| |\__ \ | |   | |\/| |  \ V /  | |\/| |\__ \ | |  >  <  |_|
-  |_| |_|_\ \___/ |___/ |_|   |_|  |_|   |_|   |_|  |_||___/|___//_/\_\ (_)
-
-(C) Chill-Astro | 2026
-""")
+    print(Fore.CYAN + r""" 
+ _____ ___  _   _  ___ _____   __  __ __   __  __  __  ___  ___ __  __  _ 
+|_   _| _ \| | | |/ __|_   _| |  \/  |\ \ / / |  \/  |/ __||_ _|\ \/ / | |
+  | | |   /| |_| |\__ \ | |   | |\/| | \ V /  | |\/| |\__ \ | |  >  <  |_|
+  |_| |_|_\ \___/ |___/ |_|   |_|  |_|  |_|   |_|  |_||___/|___|/_/\_\ (_)
+          
+(C) Chill-Astro | 2026""" + Fore.RESET)
     
-def freedom(): # For the Freedom Fighters out there! ( You know who you are! ;) )
-    print("""
-Sarfaroshi ki tamanna ab hamare dil mein hai,
-Dekhna hai zor kitna baazu-e-qaatil mein hai.
+def freedom(): # For the Freedom Fighters who Liberated Mother India! 
+    S = Fore.LIGHTYELLOW_EX + Style.BRIGHT
+    W = Fore.WHITE + Style.BRIGHT
+    G = Fore.GREEN + Style.BRIGHT
+    R = Style.RESET_ALL
+    
+    print(f"""
+{S}Sarfaroshi ki tamanna ab hamare dil mein hai,
+{S}Dekhna hai zor kitna baazu-e-qaatil mein hai.
 
-Waqt aane de bata denge tujhe ae aasmaan,
-Hum abhi se kya bataayein kya hamare dil mein hai.
+{W}Waqt aane de bata denge tujhe ae aasmaan,
+{W}Hum abhi se kya bataayein kya hamare dil mein hai.
 
-Khainch kar laayi hai sab ko qatl hone ki umeed,
-Aashiqon ka aaj jamghat koocha-e-qaatil mein hai.
+{G}Khainch kar laayi hai sab ko qatl hone ki umeed,
+{G}Aashiqon ka aaj jamghat koocha-e-qaatil mein hai.
 
-Hai liye hathiyaar dushman taak mein baitha udhar,
-Aur hum taiyaar hain seena liye apna idhar.
+{S}Hai liye hathiyaar dushman taak mein baitha udhar,
+{W}Aur hum taiyaar hain seena liye apna idhar.
+{G}Khoon se khelenge holi gar vatan mushkil mein hai,
+{G}Sarfaroshi ki tamanna ab hamare dil mein hai.{R}
+""")  
 
-Khoon se khelenge holi gar vatan mushkil mein hai,
-Sarfaroshi ki tamanna ab hamare dil mein hai.
+def help():      
+    R = Style.RESET_ALL
+    P = Fore.MAGENTA + Style.BRIGHT
+    Y = Fore.YELLOW + Style.BRIGHT
+    C = Fore.CYAN + Style.BRIGHT
+    G = Fore.GREEN + Style.BRIGHT
+
+    print(f"""             
+Huh someone asked for help? Sure!
+
+{P}Usage :{R} {C}tmm --i{R} {Y}<path_to_cert>{R}
+
+{C}tmm --v{R} : {G}Show Version{R}
+{C}tmm --h{R} : {G}Show Help{R}
+{C}tmm --uc{R} : {G}Check for Updates{R}
+
+{G}NOTE : You can also Drag & Drop the .cer file on the Execuatble or Enter the Path!{R}          
 """)
+
 
 def warning(): # Ay DO NUT IMPORT RANDOM CERTIFICATES FROM THE INTERNET!
-    print("⚠️ WARNING! ⚠️\n\nImporting Random Certificates is DANGEROUS!\nImport Certificates of only Open-Source Software downloaded from Trusted Sources or if Testing your own App!\n")
+    print(Fore.RED + "⚠️ WARNING! ⚠️\n\n" + Fore.YELLOW + "Importing Random Certificates is DANGEROUS!\nImport Certificates of only Open-Source Software downloaded from Trusted Sources or if Testing your own App!\n" + Fore.RESET)
 
 def isAdmin(): # If no then Sorry :)
     try:
@@ -75,7 +101,7 @@ def versionToTuple(v): # Coverts Version to a Tuple ( Wait I forgot what a Tuple
 
 def importCert(certificatePath, storeLocation, storeName): # The Magic of this Tool ( Ay stop calling everything as an App this is Windows not MacOS! )
     if storeLocation.lower() == 'localmachine' and not isAdmin():
-        print("Error : Administrator privileges required.")
+        print(Fore.RED + "Error : Administrator privileges required." + Fore.RESET)
         return
     try:
         subprocess.run(
@@ -84,14 +110,14 @@ def importCert(certificatePath, storeLocation, storeName): # The Magic of this T
             capture_output=True,
             text=True
         )
-        print("Import Succeeded! ✅")
+        print(Fore.GREEN + "Import Succeeded! ✅" + Fore.RESET)
     except subprocess.CalledProcessError as e:
-        print(f"Error: {e.stderr}")
+        print(Fore.RED + f"Error: {e.stderr}" + Fore.RESET)
     except Exception as e:
-        print(f"Error: {e}")
+        print(Fore.RED + f"Error: {e}" + Fore.RESET)
 
 def checkForUpdates(): # I hope you are connected to the internet for this!
-    print(f"Version - {ver} | Status - ", end="")
+    print(Fore.GREEN + f"\nv{ver}" + Fore.RESET + " | Status - ", end="")
     try:
         response = requests.get(verUrl, timeout=5)
         response.raise_for_status()
@@ -99,22 +125,22 @@ def checkForUpdates(): # I hope you are connected to the internet for this!
         latest_tup = versionToTuple(latestVersionStr)
         current_tup = versionToTuple(ver)
         if latest_tup > current_tup:            
-            print(f"Update Available : {latestVersionStr} 🎉\n")
+            print(Fore.GREEN + f"Update Available : {latestVersionStr} 🎉\n" + Fore.RESET)
         elif latest_tup == current_tup:
-            print("Up to Date 🎉\n")
+            print(Fore.GREEN + "Up to Date 🎉\n" + Fore.RESET)
         else:
-            print("DEV. Build ⚠️\n")
+            print(Fore.YELLOW + "DEV. Build ⚠️\n" + Fore.RESET)
     except Exception as e:
-        print(f"Check failed ❌ ({e})\n")
+        print(Fore.RED + f"Check failed ❌ ({e})\n" + Fore.RESET)
 
 class CustomParser(argparse.ArgumentParser): # Thou shalt see me on Binbows
     def print_help(self):
         logo()
-        super().print_help()
+        help()
 
     def error(self, message):
         logo()
-        sys.stderr.write(f'Error: {message}\n')
+        sys.stderr.write(Fore.RED + f'Error: {message}\n' + Fore.RESET)
         self.print_help()
         sys.exit(2)
 
@@ -122,7 +148,7 @@ if __name__ == "__main__":
 
     if os.name != 'nt':
         logo()
-        print("Trust My Msix! is 🪟 Windows ONLY!\nThis is not for 🐧 Linux or 🍎 MacOS!")
+        print(Fore.RED + "Trust My Msix! is 🪟 Windows ONLY!\nThis is not for 🐧 Linux or 🍎 MacOS!" + Fore.RESET)
         input("\nPress Enter to Exit...")
         sys.exit(1)
 
@@ -146,7 +172,7 @@ if __name__ == "__main__":
 
     if args.v:
         logo()
-        print(f"Version: {ver}")
+        print(Fore.GREEN + f"\nVersion: {ver}\n" + Fore.RESET)
         sys.exit(0)
 
     if args.uc:
@@ -178,11 +204,11 @@ if __name__ == "__main__":
         if os.path.exists(pathValue) and pathValue.lower().endswith('.cer'):
             certFilePath = pathValue
         else:
-            print(f"\nError : Invalid Path - {pathValue} ❌\n")
+            print(Fore.RED + f"\nError : Invalid Path - {pathValue} ❌\n" + Fore.RESET)
 
     if certFilePath is None:
         while True:
-            inputPath = input("Enter Full Path or Drop your .cer file : ").strip().strip('"')
+            inputPath = input(Fore.BLUE + "Enter Full Path or Drop your .cer file : " + Fore.RESET).strip().strip('"')
             if not inputPath:
                 continue
             if os.path.exists(inputPath) and inputPath.lower().endswith('.cer'):
@@ -191,10 +217,13 @@ if __name__ == "__main__":
             if inputPath.strip("").upper() == "VANDE MATARAM" or inputPath.strip("").upper() == "108":
                 freedom()
                 continue
+            if inputPath.strip("").upper() == "EXIT":
+                print(Fore.GREEN + "\nSee you Soon!\n" + Fore.RESET)
+                sys.exit(0)
             else:
-                print("\nError : Invalid File. ❌\n")
+                print(Fore.RED + "\nError : Invalid File. ❌\n" + Fore.RESET)
 
-    print(f"\nImporting to Trusted Root Certification Authorities ♪(´▽｀)\n")
+    print(Fore.GREEN + f"\nImporting to Trusted Root Certification Authorities ♪(´▽｀)\n" + Fore.RESET)
     importCert(certFilePath, targetStoreLocation, targetStoreName)
 
     if not args.i : input("\nPress Enter to Exit... ")      
