@@ -3,7 +3,7 @@ from colorama import init, Fore, Style
 
 verUrl = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/TMM_V.txt" # Gist URL.
 
-ver = "3.14.1.5" # Maintainence Update.
+ver = "3.15.1.5" # I FEEL THE COLOURS
 
 init(convert=True)
 
