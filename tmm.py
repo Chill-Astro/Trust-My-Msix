@@ -3,14 +3,14 @@ from colorama import init, Fore, Style
 
 verUrl = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/TMM_V.txt" # Gist URL.
 
-ver = "3.15.1.5" # I FEEL THE COLOURS
+ver = "3.14.1.5" # I FEEL THE COLOURS
 
 init(convert=True)
 
 # Msix is GREAT! Very much better than typing 'Yes' a 100 times. Only thing..... you need to buy a certificate to sign the app. Soooooo, I made this to Support Hobbyists and Students who JUST WANT TO INSTALL A FOSS PROJECT. ( Ah Lamina ✦ !)
 
 def logo():
-    print(Fore.CYAN + r""" 
+    print(Style.BRIGHT + Fore.CYAN + r""" 
  _____ ___  _   _  ___ _____   __  __ __   __  __  __  ___  ___ __  __  _ 
 |_   _| _ \| | | |/ __|_   _| |  \/  |\ \ / / |  \/  |/ __||_ _|\ \/ / | |
   | | |   /| |_| |\__ \ | |   | |\/| | \ V /  | |\/| |\__ \ | |  >  <  |_|
@@ -59,9 +59,8 @@ Huh someone asked for help? Sure!
 {G}NOTE : You can also Drag & Drop the .cer file on the Execuatble or Enter the Path!{R}          
 """)
 
-
 def warning(): # Ay DO NUT IMPORT RANDOM CERTIFICATES FROM THE INTERNET!
-    print(Fore.RED + "⚠️ WARNING! ⚠️\n\n" + Fore.YELLOW + "Importing Random Certificates is DANGEROUS!\nImport Certificates of only Open-Source Software downloaded from Trusted Sources or if Testing your own App!\n" + Fore.RESET)
+    print(Style.BRIGHT + Fore.RED + "⚠️ WARNING! ⚠️\n\n" + Style.BRIGHT + Fore.YELLOW + "Importing Random Certificates is DANGEROUS!\nImport Certificates of only Open-Source Software downloaded from Trusted Sources or if Testing your own App!\n" + Fore.RESET)
 
 def isAdmin(): # If no then Sorry :)
     try:
@@ -91,7 +90,7 @@ def runAsAdmin(): # Just helping you if you forgot 'sudo tmm -i <path>' ! ( Btw 
             )
             return False 
         except Exception as e:
-            print(f"Elevation failed: {e}")
+            print(Style.BRIGHT + Fore.RED + f"Elevation failed: {e}" + Fore.RESET)
             return False
     return True   
 
@@ -101,7 +100,7 @@ def versionToTuple(v): # Coverts Version to a Tuple ( Wait I forgot what a Tuple
 
 def importCert(certificatePath, storeLocation, storeName): # The Magic of this Tool ( Ay stop calling everything as an App this is Windows not MacOS! )
     if storeLocation.lower() == 'localmachine' and not isAdmin():
-        print(Fore.RED + "Error : Administrator privileges required." + Fore.RESET)
+        print(Style.BRIGHT + Fore.RED + "Error : Administrator privileges required." + Fore.RESET)
         return
     try:
         subprocess.run(
@@ -110,14 +109,14 @@ def importCert(certificatePath, storeLocation, storeName): # The Magic of this T
             capture_output=True,
             text=True
         )
-        print(Fore.GREEN + "Import Succeeded! ✅" + Fore.RESET)
+        print(Style.BRIGHT + Fore.GREEN + "Import Succeeded! ✅" + Fore.RESET)
     except subprocess.CalledProcessError as e:
-        print(Fore.RED + f"Error: {e.stderr}" + Fore.RESET)
+        print(Style.BRIGHT + Fore.RED + f"Error: {e.stderr}" + Fore.RESET)
     except Exception as e:
-        print(Fore.RED + f"Error: {e}" + Fore.RESET)
+        print(Style.BRIGHT + Fore.RED + f"Error: {e}" + Fore.RESET)
 
 def checkForUpdates(): # I hope you are connected to the internet for this!
-    print(Fore.GREEN + f"\nv{ver}" + Fore.RESET + " | Status - ", end="")
+    print(Style.BRIGHT + Fore.GREEN + f"\nv{ver}" + Fore.RESET + " | Status - ", end="")
     try:
         response = requests.get(verUrl, timeout=5)
         response.raise_for_status()
@@ -125,13 +124,13 @@ def checkForUpdates(): # I hope you are connected to the internet for this!
         latest_tup = versionToTuple(latestVersionStr)
         current_tup = versionToTuple(ver)
         if latest_tup > current_tup:            
-            print(Fore.GREEN + f"Update Available : {latestVersionStr} 🎉\n" + Fore.RESET)
+            print(Style.BRIGHT + Fore.GREEN + f"Update Available : {latestVersionStr} 🎉\n" + Fore.RESET)
         elif latest_tup == current_tup:
-            print(Fore.GREEN + "Up to Date 🎉\n" + Fore.RESET)
+            print(Style.BRIGHT + Fore.GREEN + "Up to Date 🎉\n" + Fore.RESET)
         else:
-            print(Fore.YELLOW + "DEV. Build ⚠️\n" + Fore.RESET)
+            print(Style.BRIGHT + Fore.YELLOW + "DEV. Build ⚠️\n" + Fore.RESET)
     except Exception as e:
-        print(Fore.RED + f"Check failed ❌ ({e})\n" + Fore.RESET)
+        print(Style.BRIGHT + Fore.RED + f"Check failed ❌ ({e})\n" + Fore.RESET)
 
 class CustomParser(argparse.ArgumentParser): # Thou shalt see me on Binbows
     def print_help(self):
@@ -140,7 +139,7 @@ class CustomParser(argparse.ArgumentParser): # Thou shalt see me on Binbows
 
     def error(self, message):
         logo()
-        sys.stderr.write(Fore.RED + f'Error: {message}\n' + Fore.RESET)
+        sys.stderr.write(Style.BRIGHT + Fore.RED + f'Error: {message}\n' + Fore.RESET)
         self.print_help()
         sys.exit(2)
 
@@ -148,7 +147,7 @@ if __name__ == "__main__":
 
     if os.name != 'nt':
         logo()
-        print(Fore.RED + "Trust My Msix! is 🪟 Windows ONLY!\nThis is not for 🐧 Linux or 🍎 MacOS!" + Fore.RESET)
+        print(Style.BRIGHT + Fore.RED + "Trust My Msix! is 🪟 Windows ONLY!\nThis is not for 🐧 Linux or 🍎 MacOS!" + Fore.RESET)
         input("\nPress Enter to Exit...")
         sys.exit(1)
 
@@ -172,7 +171,7 @@ if __name__ == "__main__":
 
     if args.v:
         logo()
-        print(Fore.GREEN + f"\nVersion: {ver}\n" + Fore.RESET)
+        print(Style.BRIGHT + Fore.GREEN + f"\nVersion: {ver}\n" + Fore.RESET)
         sys.exit(0)
 
     if args.uc:
@@ -204,11 +203,11 @@ if __name__ == "__main__":
         if os.path.exists(pathValue) and pathValue.lower().endswith('.cer'):
             certFilePath = pathValue
         else:
-            print(Fore.RED + f"\nError : Invalid Path - {pathValue} ❌\n" + Fore.RESET)
+            print(Style.BRIGHT + Fore.RED + f"\nError : Invalid Path - {pathValue} ❌\n" + Fore.RESET)
 
     if certFilePath is None:
         while True:
-            inputPath = input(Fore.BLUE + "Enter Full Path or Drop your .cer file : " + Fore.RESET).strip().strip('"')
+            inputPath = input(Style.BRIGHT + Fore.BLUE + "Enter Full Path or Drop your .cer file : " + Fore.RESET).strip().strip('"')
             if not inputPath:
                 continue
             if os.path.exists(inputPath) and inputPath.lower().endswith('.cer'):
@@ -221,9 +220,9 @@ if __name__ == "__main__":
                 print(Fore.GREEN + "\nSee you Soon!\n" + Fore.RESET)
                 sys.exit(0)
             else:
-                print(Fore.RED + "\nError : Invalid File. ❌\n" + Fore.RESET)
+                print(Style.BRIGHT + Fore.RED + "\nError : Invalid File. ❌\n" + Fore.RESET)
 
-    print(Fore.GREEN + f"\nImporting to Trusted Root Certification Authorities ♪(´▽｀)\n" + Fore.RESET)
+    print(Style.BRIGHT + Fore.GREEN + f"\nImporting to Trusted Root Certification Authorities ♪(´▽｀)\n" + Fore.RESET)
     importCert(certFilePath, targetStoreLocation, targetStoreName)
 
     if not args.i : input("\nPress Enter to Exit... ")      
