@@ -32,14 +32,39 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 - Extremely Quick and Reliable. ✅
 - Zero Instructions Needed for Novice Users. ✅
 - Supports Arguments for Easy Importing. ✅
+- Supports Drag and Drop.
 
 ---
 
-## HALT ON DEVELOPMENT :
+## Usage :
 
-- This Project is now a "Complete Product" in my Vision. So I have no other Ideas.
+- Trust My Msix! can be easily used by just running the Portable `.exe`
+- Trust My Msix!'s entire CLI can be bypassed by using the argument '--i' :
+      
+      tmm --i <path>
+      # python tmm.py --i <path> if using Python File.
+      # .\tmm --i <path> if using Powershell on Portable exe.
   
---- 
+- Help, Version and Update Check can be accessed as follows :
+      
+      tmm --h
+      # python tmm.py --h if using Python File.
+      # .\tmm --h if using Powershell on Portable exe.
+      tmm --v
+      # python tmm.py --v if using Python File.
+      # .\tmm --v if using Powershell on Portable exe.
+      tmm --uc
+      # python tmm.py --uc if using Python File.
+      # .\tmm --uc if using Powershell on Portable exe.
+---
+
+## Preview :
+
+<kbd>
+  <img alt="image" src="https://github.com/user-attachments/assets/914afff0-cdab-4a14-b73a-520502812936" />
+</kbd>
+
+---
 
 ## Version Structure :
 
@@ -104,35 +129,6 @@ STEP 5 : Run
 
     tmm --i <path> 
     # Use pyhton tmm.py - i <path> if not Building
-
----
-
-## Usage :
-
-- Trust My Msix! can be easily used by just running the Portable `.exe`
-- Trust My Msix!'s entire CLI can be bypassed by using the argument '--i' :
-      
-      tmm --i <path>
-      # python tmm.py --i <path> if using Python File.
-      # .\tmm --i <path> if using Powershell on Portable exe.
-  
-- Help, Version and Update Check can be accessed as follows :
-      
-      tmm --h
-      # python tmm.py --h if using Python File.
-      # .\tmm --h if using Powershell on Portable exe.
-      tmm --v
-      # python tmm.py --v if using Python File.
-      # .\tmm --v if using Powershell on Portable exe.
-      tmm --uc
-      # python tmm.py --uc if using Python File.
-      # .\tmm --uc if using Powershell on Portable exe.
-
----
-
-## Credit :
-
-- Wallpaper by [@Lisa on Pexels](https://www.pexels.com/photo/pink-flowers-photograph-1083822/)
 
 ---
 
