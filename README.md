@@ -61,7 +61,7 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 ## Preview :
 
 <kbd>
-  <img alt="image" src="https://github.com/user-attachments/assets/914afff0-cdab-4a14-b73a-520502812936" />
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6949cfb4-0337-4b18-a21f-244748fb3935" />
 </kbd>
 
 ---
