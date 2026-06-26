@@ -60,7 +60,7 @@ Huh someone asked for help? Sure!
 """)
 
 def warning(): # Ay DO NUT IMPORT RANDOM CERTIFICATES FROM THE INTERNET!
-    print(Style.BRIGHT + Fore.YELLOW + "⚠️ WARNING! ⚠️\n\n" + Style.BRIGHT + Fore.YELLOW + "Importing Random Certificates is DANGEROUS!\n" + Fore.RESET)
+    print(Style.BRIGHT + Fore.YELLOW + "⚠️ WARNING! ⚠️\n\n" + Style.BRIGHT + Fore.YELLOW + "Importing Random Certificates is DANGEROUS! Use at your OWN RISK!\n" + Fore.RESET)
 
 def isAdmin(): # If no then Sorry :)
     try:
