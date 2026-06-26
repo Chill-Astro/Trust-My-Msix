@@ -60,7 +60,7 @@ Huh someone asked for help? Sure!
 """)
 
 def warning(): # Ay DO NUT IMPORT RANDOM CERTIFICATES FROM THE INTERNET!
-    print(Style.BRIGHT + Fore.RED + "⚠️ WARNING! ⚠️\n\n" + Style.BRIGHT + Fore.YELLOW + "Importing Random Certificates is DANGEROUS!\nImport Certificates of only Open-Source Software downloaded from Trusted Sources or if Testing your own App!\n" + Fore.RESET)
+    print(Style.BRIGHT + Fore.YELLOW + "⚠️ WARNING! ⚠️\n\n" + Style.BRIGHT + Fore.YELLOW + "Importing Random Certificates is DANGEROUS!\nImport Certificates of only Open-Source Software downloaded from Trusted Sources or if Testing your own App!\n" + Fore.RESET)
 
 def isAdmin(): # If no then Sorry :)
     try:
@@ -116,7 +116,7 @@ def importCert(certificatePath, storeLocation, storeName): # The Magic of this T
         print(Style.BRIGHT + Fore.RED + f"Error: {e}" + Fore.RESET)
 
 def checkForUpdates(): # I hope you are connected to the internet for this!
-    print(Style.BRIGHT + Fore.GREEN + f"\nv{ver}" + Fore.RESET + " | Status - ", end="")
+    print(Style.BRIGHT + Fore.CYAN + f"\nv{ver}" + Fore.RESET + " | Status - ", end="")
     try:
         response = requests.get(verUrl, timeout=5)
         response.raise_for_status()
@@ -149,6 +149,7 @@ if __name__ == "__main__":
         logo()
         print(Style.BRIGHT + Fore.RED + "Trust My Msix! is 🪟 Windows ONLY!\nThis is not for 🐧 Linux or 🍎 MacOS!" + Fore.RESET)
         input("\nPress Enter to Exit...")
+        print()
         sys.exit(1)
 
     parser = CustomParser(
@@ -207,7 +208,7 @@ if __name__ == "__main__":
 
     if certFilePath is None:
         while True:
-            inputPath = input(Style.BRIGHT + Fore.BLUE + "Enter Full Path or Drop your .cer file : " + Fore.RESET).strip().strip('"')
+            inputPath = input("Enter Full Path : ").strip().strip('"')
             if not inputPath:
                 continue
             if os.path.exists(inputPath) and inputPath.lower().endswith('.cer'):

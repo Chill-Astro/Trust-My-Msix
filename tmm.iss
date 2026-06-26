@@ -22,6 +22,7 @@ ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
+SetupIconFile=Installer.ico
 LicenseFile=C:\Users\Master\Chill-Astro\Trust-My-Msix\LICENSE.txt
 WizardStyle=modern dynamic windows11
 PrivilegesRequired=admin
