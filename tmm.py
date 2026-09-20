@@ -3,7 +3,7 @@ from colorama import init, Fore, Style
 
 verUrl = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/TMM_V.txt" # Gist URL.
 
-ver = "3.14.1.5" # I FEEL THE COLOURS
+ver = "3.14.1.6" # Maintainece Update
 
 init(convert=True)
 
@@ -130,7 +130,7 @@ def checkForUpdates(): # I hope you are connected to the internet for this!
         else:
             print(Style.BRIGHT + Fore.YELLOW + "DEV. Build ⚠️\n" + Fore.RESET)
     except Exception as e:
-        print(Style.BRIGHT + Fore.RED + f"Check failed ❌ ({e})\n" + Fore.RESET)
+        print(Style.BRIGHT + Fore.RED + "Check failed ❌ \n" + Fore.RESET)
 
 class CustomParser(argparse.ArgumentParser): # Thou shalt see me on Binbows
     def print_help(self):

@@ -11,7 +11,7 @@ The `.msix` format is AWESOME and leaves far less traces and doesn't need pressi
 
 Normally Users have to go through the Import process of a Self-Signed Certificate which is TEDIOUS and CONFUSING, especially for Newbies. `This tool makes this process take 1 second`!
   
-**Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.5`
+**Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.6`
 
 **Execution Alias :** `tmm.exe`
 
@@ -72,14 +72,14 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 
 <H2>
 
-v`3.14`.`1.5`
+v`3.14`.`1.6`
 
 </H2>
 
 </div>
 
 - `3.14` -> Python Version ( NOT a Strict Requirement. *BUT I AM CUTTING EDGE!* )
-- `1.5` -> App Version ( Incremented by `0.1` Every Release )
+- `1.6` -> App Version ( Incremented by `0.1` Every Release )
 
 ---
 
@@ -119,7 +119,7 @@ STEP 2 : Clone this Repository :
 
 STEP 3 : Install Dependencies 
 
-    pip install -r Reqs.txt
+    pip install -r reqs.txt
 
 STEP 4 : Build
 
@@ -143,21 +143,21 @@ I am trying my best to report these people.
 
 ---
 
-## HALL OF FAME 👍 : 
+## HALL OF FAME : 
 
-// Will add Forked Repos which are genuinely good. 🤩 I will list everything Good about them.
-
----
-
-## HALL OF NEUTRALITY 😐 :
-
-// Will add Inactive Forks. Uh yeah that's it atleast it's Forking not Cloning! 😅
+// Will add Forked Repos which are genuinely good. I will list everything Good about them.
 
 ---
 
-## HALL OF SHAME 👎 :
+## HALL OF NEUTRALITY :
 
-// Includes Clones who are working against the MIT Licence and Distributing Malware. All Flaws are mentioned. 😑
+// Will add Inactive Forks. Uh yeah that's it atleast it's Forking not Cloning!
+
+---
+
+## HALL OF SHAME :
+
+// Includes Clones who are working against the MIT Licence and Distributing Malware. All Flaws are mentioned.
 
 - Trust My Msix! previously MsixCertImportTool has undergone Malware Attacks.
 
