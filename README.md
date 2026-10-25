@@ -11,7 +11,7 @@ The `.msix` format is AWESOME and leaves far less traces and doesn't need pressi
 
 Normally Users have to go through the Import process of a Self-Signed Certificate which is TEDIOUS and CONFUSING, especially for Newbies. `This tool makes this process take 1 second`!
   
-**Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.6`
+**Target OS :** **Windows** ONLY.  |  **Latest Stable Version :** `v3.14.1.7`
 
 **Execution Alias :** `tmm.exe`
 
@@ -32,7 +32,8 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 - Extremely Quick and Reliable. ✅
 - Zero Instructions Needed for Novice Users. ✅
 - Supports Arguments for Easy Importing. ✅
-- Supports Drag and Drop.
+- Supports Drag and Drop. ✅
+- Update Checker that can download Updates FOR YOU! ( With Consent ) ✅
 
 ---
 
@@ -72,14 +73,14 @@ This is the original version of Trust My Msix! Don't trust Counterfeit Versions.
 
 <H2>
 
-v`3.14`.`1.6`
+v`3.14`.`1.7`
 
 </H2>
 
 </div>
 
 - `3.14` -> Python Version ( NOT a Strict Requirement. *BUT I AM CUTTING EDGE!* )
-- `1.6` -> App Version ( Incremented by `0.1` Every Release )
+- `1.7` -> App Version ( Incremented by `0.1` Every Release )
 
 ---
 

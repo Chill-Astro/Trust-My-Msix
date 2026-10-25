@@ -11,8 +11,11 @@ from pathlib import Path
 from urllib.parse import urlparse, unquote
 from colorama import init, Fore, Style
 
+# TEST URL!!
+#repoUrl = "http://localhost:8000/assets/data/repo-data.json"
 
 repoUrl = "https://chill-astro.github.io/assets/data/repo-data.json"
+
 repoKey = "trustMyMsix"
 
 ver = "3.14.1.7"  # UPDATE CHECKER OVERHAUL
@@ -614,16 +617,16 @@ def main():
         checkForUpdates()
         return 0
 
+    if args.vande_mataram:
+            logo()
+            freedom()
+            return 0
+
     # Administrator First! Except for --v, --h and --uc.
     # No logo, update check, or certificate prompt before UAC.
     if not isAdmin():
         runAsAdmin()
-        return 0
-
-    if args.vande_mataram:
-        logo()
-        freedom()
-        return 0
+        return 0    
 
     # --i SHALL NOT TRIGGER THE UPDATE CHECKER!
     # Drag & Drop skips it too. No internet needed to import a certificate!
